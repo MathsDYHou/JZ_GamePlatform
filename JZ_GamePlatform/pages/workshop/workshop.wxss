@@ -1,0 +1,136 @@
+/* 继承任务世界的原神淡色主题基调 */
+page {
+  height: 100%;
+  background: linear-gradient(180deg, #f5f3ff 0%, #fdfcf7 45%, #f3f7ff 100%);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top-bar {
+  width: 100%;
+  background: linear-gradient(135deg, #f3e7e9, #e3eeff);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.nav-title-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding-left: 120rpx;
+  padding-right: 120rpx;
+  box-sizing: border-box;
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  display: block;
+  color: #3b4256;
+}
+
+.hero-card {
+  margin: 24rpx 24rpx 16rpx;
+  padding: 24rpx 28rpx;
+  border-radius: 24rpx;
+  background: radial-gradient(circle at 0% 0%, #fff7e5 0%, #e7f0ff 55%, #f4f3ff 100%);
+  box-shadow: 0 10rpx 26rpx rgba(170, 179, 210, 0.45);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #3b4256;
+  margin-bottom: 6rpx;
+}
+
+.hero-sub text {
+  font-size: 26rpx;
+  color: #636b83;
+}
+
+.module-grid {
+  padding: 8rpx 24rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  row-gap: 18rpx;
+}
+
+.module-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20rpx 22rpx;
+  border-radius: 20rpx;
+  background: radial-gradient(circle at 0% 0%, #ffffff 0%, #fdf7f0 45%, #f3f4ff 100%);
+  box-shadow: 0 14rpx 30rpx rgba(191, 196, 222, 0.6);
+  border: 1rpx solid rgba(226, 219, 200, 0.8);
+}
+
+.module-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18rpx;
+}
+
+.module-icon-text {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.icon-apply {
+  background: linear-gradient(135deg, #9cc7ff, #c1d9ff);
+  box-shadow: 0 10rpx 22rpx rgba(148, 178, 238, 0.7);
+}
+
+.icon-official {
+  background: linear-gradient(135deg, #ffe0a3, #ffd8b3);
+  box-shadow: 0 10rpx 22rpx rgba(231, 176, 94, 0.7);
+}
+
+.icon-venue {
+  background: linear-gradient(135deg, #a5e2c5, #d3f7d8);
+  box-shadow: 0 10rpx 22rpx rgba(107, 196, 150, 0.7);
+}
+
+.icon-settlement {
+  background: linear-gradient(135deg, #facc6b, #ffe7a8);
+  box-shadow: 0 10rpx 22rpx rgba(225, 170, 75, 0.7);
+}
+
+.module-info {
+  flex: 1;
+}
+
+.module-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #3b4256;
+  margin-bottom: 6rpx;
+}
+
+.module-desc {
+  font-size: 26rpx;
+  color: #636b83;
+  line-height: 1.5;
+}
+

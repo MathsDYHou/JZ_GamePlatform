@@ -1,0 +1,40 @@
+<view class="page">
+  <!-- 自定义导航栏（与任务世界同风格） -->
+  <view class="top-bar" style="height: {{navHeight}}px;">
+    <view
+      class="nav-title-container"
+      style="top: {{titleTop}}px; height: 44px; line-height: 44px;"
+    >
+      <text class="nav-title">创制工坊</text>
+    </view>
+  </view>
+
+  <!-- 占位：把内容顶到导航栏下方 -->
+  <view style="height: {{navHeight}}px;"></view>
+
+  <!-- 顶部简介卡片 -->
+  <view class="hero-card">
+    <view class="hero-left">
+      <view class="hero-title">城市空间 · 共创工坊</view>
+      <view class="hero-sub">
+        <text>从活动发起到收益结算，一站式管理你的创意项目。</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能模块区 -->
+  <view class="module-grid">
+    <block wx:for="{{modules}}" wx:key="key">
+      <view class="module-card" bindtap="goModule" data-key="{{item.key}}">
+        <view class="module-icon {{item.iconClass}}">
+          <text class="module-icon-text">{{item.short}}</text>
+        </view>
+        <view class="module-info">
+          <view class="module-title">{{item.title}}</view>
+          <view class="module-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+

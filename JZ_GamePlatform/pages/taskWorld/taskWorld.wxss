@@ -1,0 +1,359 @@
+/* 页面基础：原神风·淡色幻想系 */
+page {
+  height: 100%;
+  background: linear-gradient(180deg, #f5f3ff 0%, #fdfcf7 45%, #f3f7ff 100%);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 导航栏背景（固定定位） */
+.top-bar {
+  width: 100%;
+  background: linear-gradient(135deg, #f3e7e9, #e3eeff);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* 标题容器：绝对定位，通过JS计算的top值使中心与胶囊中心对齐 */
+.nav-title-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding-left: 120rpx;
+  padding-right: 120rpx;
+  box-sizing: border-box;
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  display: block;
+  color: #3b4256;
+}
+
+.nav-subtitle {
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  opacity: 0.9;
+}
+
+/* 顶部氛围卡片：淡金 + 浅蓝 */
+.hero-card {
+  margin: 24rpx 24rpx 12rpx;
+  padding: 24rpx 28rpx;
+  border-radius: 24rpx;
+  background: radial-gradient(circle at 0% 0%, #fff7e5 0%, #e7f0ff 55%, #f4f3ff 100%);
+  box-shadow: 0 10rpx 26rpx rgba(170, 179, 210, 0.45);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #3b4256;
+}
+
+.hero-left {
+  flex: 1;
+  padding-right: 20rpx;
+}
+
+.hero-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 6rpx;
+}
+
+.hero-sub text {
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+.hero-tags {
+  margin-top: 14rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hero-tag {
+  font-size: 20rpx;
+  padding: 6rpx 14rpx;
+  border-radius: 999rpx;
+  border: 1rpx solid rgba(197, 181, 140, 0.6);
+  margin-right: 10rpx;
+  margin-bottom: 8rpx;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.hero-right {
+  width: 150rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-circle {
+  width: 132rpx;
+  height: 132rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #fff7e5 0%, #ffe7ba 40%, #fef9e7 100%);
+  border: 2rpx solid rgba(234, 179, 8, 0.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.hero-score-label {
+  font-size: 22rpx;
+  opacity: 0.9;
+  color: #7a6650;
+}
+
+.hero-score-value {
+  margin-top: 6rpx;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #b45309;
+}
+
+/* 标签栏包装，增加与顶部卡片的衔接感 */
+.tab-bar-wrapper {
+  margin: 0 0 4rpx;
+  padding: 0 16rpx 10rpx;
+}
+
+/* 标签栏（单行平分） */
+.tab-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tab-item {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18rpx 0;
+  margin-right: 12rpx;
+  font-size: 30rpx;
+  color: #8b97c2;
+  font-weight: 700;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8rpx 20rpx rgba(179, 187, 214, 0.55);
+}
+
+.tab-item:last-child {
+  margin-right: 0;
+}
+
+.tab-item.active {
+  color: #5b4630;
+  background: linear-gradient(135deg, #ffe7b3, #fdd9a3);
+  box-shadow: 0 10rpx 26rpx rgba(231, 176, 94, 0.7);
+}
+
+/* 任务列表内容区（可滚动） */
+.content {
+  flex: 1;
+  padding: 8rpx 24rpx 24rpx;
+}
+
+/* 任务卡片 */
+.task-card {
+  background: radial-gradient(circle at 0% 0%, #ffffff 0%, #fdf7f0 45%, #f3f4ff 100%);
+  border-radius: 20rpx;
+  padding: 24rpx 26rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 16rpx 34rpx rgba(191, 196, 222, 0.7);
+  border: 1rpx solid rgba(226, 219, 200, 0.8);
+}
+
+.task-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-title-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.task-index {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(135deg, #ffe7b3, #facc6b);
+  box-shadow: 0 8rpx 18rpx rgba(231, 176, 94, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14rpx;
+}
+
+.task-index-text {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #5b4630;
+}
+
+.task-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #3b4256;
+}
+
+.task-status {
+  display: flex;
+  align-items: center;
+}
+
+.task-status-tag {
+  font-size: 26rpx;
+  padding: 6rpx 14rpx;
+  border-radius: 999rpx;
+  background: rgba(45, 190, 115, 0.12);
+  color: #1f9f5a;
+  margin-right: 10rpx;
+}
+
+.task-arrow {
+  font-size: 32rpx;
+  color: #c0c4d4;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.task-arrow.opened {
+  transform: rotate(90deg);
+  color: #7a88b8;
+}
+
+/* 展开详情 */
+.task-detail {
+  margin-top: 20rpx;
+  border-top: 1rpx solid #f0f2f7;
+  padding-top: 18rpx;
+}
+
+.section {
+  margin-bottom: 16rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.section-brief {
+  align-items: flex-start;
+}
+
+.section-reward,
+.section-badge {
+  align-items: flex-start;
+}
+
+.section-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 18rpx;
+  margin-right: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.section-icon-brief {
+  background: linear-gradient(135deg, #9cc7ff, #c1d9ff);
+}
+
+.section-icon-reward {
+  background: linear-gradient(135deg, #a5e2c5, #d3f7d8);
+}
+
+.section-icon-badge {
+  background: linear-gradient(135deg, #ffe0a3, #ffd8b3);
+}
+
+.section-content {
+  flex: 1;
+}
+
+.section-title {
+  color: #7d8ab7;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 6rpx;
+}
+
+.section-text {
+  font-size: 30rpx;
+  color: #636b83;
+  line-height: 1.6;
+}
+
+.reward-list {
+  margin-top: 4rpx;
+}
+
+.reward-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 6rpx;
+}
+
+.reward-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #46b37c;
+  margin-top: 12rpx;
+  margin-right: 8rpx;
+}
+
+.reward-text {
+  flex: 1;
+  font-size: 30rpx;
+  color: #3c9467;
+}
+
+.badge {
+  background: rgba(248, 213, 132, 0.12);
+  color: #d79c21;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  align-self: flex-start;
+}
+
+.badge-row {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 12rpx;
+  border-radius: 999rpx;
+  background: rgba(250, 214, 150, 0.48);
+}
+
+.badge-icon {
+  width: 22rpx;
+  height: 22rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #facc6b, #ffe7a8);
+  margin-right: 8rpx;
+}
+
+.badge-text {
+  font-size: 24rpx;
+  color: #bf7a1a;
+}

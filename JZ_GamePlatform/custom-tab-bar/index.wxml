@@ -1,0 +1,17 @@
+<view class="tabbar-wrapper">
+  <view class="tabbar-bg"></view>
+  <view class="tabbar-inner">
+    <block wx:for="{{list}}" wx:key="pagePath">
+      <view
+        class="tabbar-item {{selected === index ? 'tabbar-item-active' : ''}}"
+        bindtap="onTap"
+        data-index="{{index}}"
+      >
+        <view class="tabbar-item-pill">
+          <text class="tabbar-text">{{item.text}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+

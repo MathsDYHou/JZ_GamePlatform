@@ -1,0 +1,116 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="top-bar" style="height: {{navHeight}}px;">
+    <view
+      class="nav-title-container"
+      style="top: {{titleTop}}px; height: 44px; line-height: 44px;"
+    >
+      <view class="nav-back" bindtap="goBack">‹</view>
+      <text class="nav-title">铁道商城</text>
+    </view>
+  </view>
+
+  <!-- 页面内容：参考活动申请页，让内容从导航栏下方开始，并可上下滑动 -->
+  <scroll-view
+    class="content"
+    scroll-y="true"
+    show-scrollbar="true"
+    enable-flex="true"
+    style="padding-top: {{navHeight}}px; max-width: {{contentWidth}}px; margin: 0 auto;"
+  >
+    <!-- 铁道币概览 -->
+    <view class="balance-section">
+      <view class="balance-card">
+        <view class="balance-main">
+          <view class="balance-coin-circle">
+            <text class="balance-coin-value">{{coins}}</text>
+            <text class="balance-coin-unit">币</text>
+          </view>
+        </view>
+        <view class="balance-footer">
+          <text class="balance-tip">完成任务与参与活动即可持续获得铁道币</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 实物商品 -->
+    <view class="section-card">
+      <view class="section-header">
+        <text class="section-title">限定文创周边</text>
+      </view>
+      <block wx:for="{{physicalGoods}}" wx:key="id">
+        <view
+          class="goods-row"
+          bindtap="onShowDetail"
+          data-id="{{item.id}}"
+          data-type="physical"
+        >
+          <view class="goods-main">
+            <image
+              class="goods-icon {{item.iconType}}"
+              src="{{item.icon}}"
+              mode="aspectFill"
+            />
+            <view class="goods-name">{{item.name}}</view>
+          </view>
+          <view class="goods-side">
+            <view class="goods-cost">{{item.cost}}币</view>
+            <button
+              class="goods-btn"
+              size="mini"
+              data-id="{{item.id}}"
+              data-type="physical"
+              catchtap="onRedeem"
+            >
+              兑换
+            </button>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 平台联动券 -->
+    <view class="section-card">
+      <view class="section-header">
+        <text class="section-title">平台联动优惠券</text>
+      </view>
+      <block wx:for="{{coupons}}" wx:key="id">
+        <view
+          class="goods-row"
+          bindtap="onShowDetail"
+          data-id="{{item.id}}"
+          data-type="coupon"
+        >
+          <view class="goods-main">
+            <image
+              class="goods-icon {{item.iconType}}"
+              src="{{item.icon}}"
+              mode="aspectFill"
+            />
+            <view class="goods-name">{{item.name}}</view>
+          </view>
+          <view class="goods-side">
+            <view class="goods-cost">{{item.cost}}币</view>
+            <button
+              class="goods-btn"
+              size="mini"
+              data-id="{{item.id}}"
+              data-type="coupon"
+              catchtap="onRedeem"
+            >
+              {{item.code ? '已兑换' : '兑换'}}
+            </button>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 更多精彩 -->
+    <view class="section-card more-coming">
+      <view class="section-header">
+        <text class="section-title">更多精彩 敬请期待</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+

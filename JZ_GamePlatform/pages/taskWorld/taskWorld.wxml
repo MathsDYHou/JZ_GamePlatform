@@ -1,0 +1,119 @@
+<view class="page">
+  <!-- 自定义导航栏（固定定位） -->
+  <view class="top-bar" style="height: {{navHeight}}px;">
+    <!-- 标题容器：绝对定位，与胶囊中心对齐 -->
+    <view
+      class="nav-title-container"
+      style="top: {{titleTop}}px; height: 44px; line-height: 44px;"
+    >
+      <text class="nav-title">任务世界</text>
+    </view>
+  </view>
+
+  <!-- 占位元素：高度等于导航栏，将后续内容推至导航栏下方 -->
+  <view style="height: {{navHeight}}px;"></view>
+
+  <!-- 顶部信息区 / 氛围卡片 -->
+  <view class="hero-card">
+    <view class="hero-left">
+      <view class="hero-title">今日探索进度</view>
+      <view class="hero-sub">
+        <text>主线 · 支线 · 限时任务等你完成</text>
+      </view>
+      <view class="hero-tags">
+        <text class="hero-tag">科普</text>
+        <text class="hero-tag">文化</text>
+        <text class="hero-tag">阅读</text>
+        <text class="hero-tag">运动</text>
+      </view>
+    </view>
+    <view class="hero-right">
+      <view class="hero-circle">
+        <text class="hero-score-label">铁道币</text>
+        <text class="hero-score-value">∞</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 任务分类标签栏（单行平分） -->
+  <view class="tab-bar-wrapper">
+  <view class="tab-bar">
+    <block wx:for="{{tabs}}" wx:key="index">
+      <view
+        class="tab-item {{currentTab===index?'active':''}}"
+        bindtap="switchTab"
+        data-index="{{index}}"
+      >
+        {{item}}
+      </view>
+    </block>
+    </view>
+  </view>
+
+  <!-- 任务列表内容区 -->
+  <scroll-view
+    class="content"
+    scroll-y
+    style="max-width: {{contentWidth}}px; margin: 0 auto;"
+  >
+    <block wx:for="{{taskData[currentTab]}}" wx:key="title">
+      <view
+        class="task-card"
+        bindtap="toggleTask"
+        data-index="{{index}}"
+      >
+        <view class="task-card-header">
+          <view class="task-title-wrap">
+            <view class="task-index">
+              <text class="task-index-text">{{index + 1}}</text>
+            </view>
+        <view class="task-title">{{item.title}}</view>
+          </view>
+          <view class="task-status">
+            <text class="task-status-tag">可参与</text>
+            <text class="task-arrow {{openedMap[currentTab][index] ? 'opened' : ''}}">›</text>
+          </view>
+        </view>
+
+        <view wx:if="{{openedMap[currentTab][index]}}" class="task-detail">
+          <!-- 简介：左侧图标 + 右侧说明 -->
+          <view class="section section-brief">
+            <view class="section-icon section-icon-brief">i</view>
+            <view class="section-content">
+            <text class="section-title">内容简介</text>
+            <text class="section-text">{{item.desc}}</text>
+            </view>
+          </view>
+
+          <!-- 积分奖励：小圆点列表 -->
+          <view class="section section-reward">
+            <view class="section-icon section-icon-reward">★</view>
+            <view class="section-content">
+            <text class="section-title">积分奖励</text>
+              <view class="reward-list">
+            <block wx:for="{{item.reward}}" wx:key="index">
+                  <view class="reward-row">
+                    <view class="reward-dot"></view>
+                    <text class="reward-text">{{item}}</text>
+                  </view>
+            </block>
+              </view>
+            </view>
+          </view>
+
+          <!-- 成就徽章：图标 + 徽章名称 -->
+          <view class="section section-badge">
+            <view class="section-icon section-icon-badge">🏅</view>
+            <view class="section-content">
+            <text class="section-title">成就徽章</text>
+              <view class="badge-row">
+                <view class="badge-icon"></view>
+                <view class="badge-text">{{item.badge}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

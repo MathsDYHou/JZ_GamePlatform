@@ -1,0 +1,162 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="top-bar" style="height: {{navHeight}}px;">
+    <view
+      class="nav-title-container"
+      style="top: {{titleTop}}px; height: 44px; line-height: 44px;"
+    >
+      <text class="nav-title">主地图</text>
+    </view>
+  </view>
+
+  <!-- 占位：将内容推到导航栏下方 -->
+  <view style="height: {{navHeight}}px;"></view>
+
+  <!-- 主地图图片：宽度充满，支持双指缩放 -->
+  <view class="content">
+    <view
+      class="map-container"
+      bindtouchstart="onTouchStart"
+      bindtouchmove="onTouchMove"
+      bindtouchend="onTouchEnd"
+      bindtouchcancel="onTouchEnd"
+      bindtap="openEventPopup"
+    >
+      <image
+        src="/MainMap.png"
+        class="map-image"
+        mode="widthFix"
+        style="transform: scale({{scale}}); transform-origin: center top;"
+      />
+      <view class="center-marker">
+        <view class="marker-head">
+          <image
+            src="/Picture/11.png"
+            class="marker-head-img"
+            mode="aspectFill"
+          />
+        </view>
+        <view class="marker-tail-wrapper"></view>
+      </view>
+
+      <!-- 左侧垂直导航栏 -->
+      <view class="map-side-toolbar" style="top: {{navHeight + 12}}px;">
+        <view
+          class="toolbar-item {{activeTool === 'activity' ? 'toolbar-item-active' : ''}}"
+          data-type="activity"
+          catchtap="onSelectTool"
+        >
+          <image src="/Picture/logo.png" class="toolbar-icon" mode="aspectFill" />
+          <text class="toolbar-text">活动</text>
+        </view>
+        <view class="toolbar-divider"></view>
+        <view
+          class="toolbar-item {{activeTool === 'toilet' ? 'toolbar-item-active' : ''}}"
+          data-type="toilet"
+          catchtap="onSelectTool"
+        >
+          <view class="toolbar-icon-circle">卫</view>
+          <text class="toolbar-text">卫生间</text>
+        </view>
+        <view class="toolbar-divider"></view>
+        <view
+          class="toolbar-item {{activeTool === 'energy' ? 'toolbar-item-active' : ''}}"
+          data-type="energy"
+          catchtap="onSelectTool"
+        >
+          <view class="toolbar-icon-circle">能</view>
+          <text class="toolbar-text">能量驿站</text>
+        </view>
+        <view class="toolbar-divider"></view>
+        <view
+          class="toolbar-item {{activeTool === 'firstaid' ? 'toolbar-item-active' : ''}}"
+          data-type="firstaid"
+          catchtap="onSelectTool"
+        >
+          <view class="toolbar-icon-circle">救</view>
+          <text class="toolbar-text">急救点</text>
+        </view>
+        <view class="toolbar-divider"></view>
+        <view
+          class="toolbar-item {{activeTool === 'water' ? 'toolbar-item-active' : ''}}"
+          data-type="water"
+          catchtap="onSelectTool"
+        >
+          <view class="toolbar-icon-circle">水</view>
+          <text class="toolbar-text">饮水处</text>
+        </view>
+        <view class="toolbar-divider"></view>
+        <view
+          class="toolbar-item {{activeTool === 'locker' ? 'toolbar-item-active' : ''}}"
+          data-type="locker"
+          catchtap="onSelectTool"
+        >
+          <view class="toolbar-icon-circle">柜</view>
+          <text class="toolbar-text">储物柜</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部信息模块 -->
+    <view class="map-info-card">
+      <view class="map-info-title">当前区域：铁道市集</view>
+      <view class="map-info-row">
+        <view class="map-info-item">
+          <view class="map-info-item-label">时间</view>
+          <view class="map-info-item-value">09:30</view>
+        </view>
+        <view class="map-info-item">
+          <view class="map-info-item-label">温度</view>
+          <view class="map-info-item-value">12℃</view>
+        </view>
+        <view class="map-info-item">
+          <view class="map-info-item-label">天气</view>
+          <view class="map-info-item-value">多云</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 活动弹窗 -->
+    <view wx:if="{{showEventPopup}}" class="popup-mask" catchtap="closeEventPopup">
+      <view class="popup-card" catchtap="noop">
+        <view class="popup-header">
+          <view class="popup-title">铁道市集美食节</view>
+          <view class="popup-status">即将开始</view>
+        </view>
+
+        <view class="popup-grid">
+          <view class="popup-field">
+            <view class="popup-label">举办地点</view>
+            <view class="popup-value">铁道市集</view>
+          </view>
+          <view class="popup-field">
+            <view class="popup-label">时间</view>
+            <view class="popup-value">2026年3月20日-3月23日</view>
+            <view class="popup-subvalue">11:00 - 20:00</view>
+          </view>
+          <view class="popup-field">
+            <view class="popup-label">参与人数</view>
+            <view class="popup-value">360/500人</view>
+          </view>
+        </view>
+
+        <view class="popup-detail">
+          <view class="popup-detail-row">
+            <view class="popup-label">详情</view>
+            <view class="popup-detail-action" bindtap="toggleEventDetail">
+              {{eventDetailExpanded ? '收起' : '展开'}}
+            </view>
+          </view>
+          <view wx:if="{{eventDetailExpanded}}" class="popup-detail-text">
+            高校食堂招牌美食及各地风味佳肴集结，搭配文创非遗，解锁烟火气十足的休闲时光。
+          </view>
+        </view>
+
+        <view class="popup-actions">
+          <button class="popup-btn" bindtap="onJoinNow">立即参与</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

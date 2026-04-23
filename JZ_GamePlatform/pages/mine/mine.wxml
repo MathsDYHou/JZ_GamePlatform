@@ -1,0 +1,84 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="top-bar" style="height: {{navHeight}}px;">
+    <view
+      class="nav-title-container"
+      style="top: {{titleTop}}px; height: 44px; line-height: 44px;"
+    >
+      <text class="nav-title">我的</text>
+    </view>
+  </view>
+
+  <view style="height: {{navHeight}}px;"></view>
+
+  <scroll-view
+    class="content"
+    scroll-y
+    style="max-width: {{contentWidth}}px; margin: 0 auto;"
+  >
+    <!-- 头像、昵称、等级、铁道币 -->
+    <view class="profile-card">
+      <view class="profile-left">
+        <view class="avatar-circle">
+          <text class="avatar-text">我</text>
+        </view>
+        <view class="profile-info">
+          <view class="profile-name">旅者昵称</view>
+          <view class="profile-subline">
+            等级 Lv.3 · 铁道印记·青铜
+          </view>
+        </view>
+      </view>
+      <view class="profile-right">
+        <view class="coin-pill">
+          <text class="coin-pill-label">铁道币</text>
+          <text class="coin-pill-value">2,480</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 我的功能入口：仿创制工坊的模块卡片样式 -->
+    <view class="module-grid">
+      <view class="module-card" bindtap="goMyTask">
+        <view class="module-icon icon-m-task">
+          <text class="module-icon-text">任</text>
+        </view>
+        <view class="module-info">
+          <view class="module-title">我的任务</view>
+          <view class="module-desc">查看进行中与已完成任务进度。</view>
+        </view>
+      </view>
+
+      <view class="module-card" bindtap="goMall">
+        <view class="module-icon icon-m-mall">
+          <text class="module-icon-text">商</text>
+        </view>
+        <view class="module-info">
+          <view class="module-title">商城</view>
+          <view class="module-desc">使用铁道币兑换文创、权益与福利。</view>
+        </view>
+      </view>
+
+      <view class="module-card" bindtap="goMark">
+        <view class="module-icon icon-m-mark">
+          <text class="module-icon-text">印</text>
+        </view>
+        <view class="module-info">
+          <view class="module-title">铁道印记</view>
+          <view class="module-desc">等级、成长轨迹与专属徽章。</view>
+        </view>
+      </view>
+
+      <view class="module-card" bindtap="goProjects">
+        <view class="module-icon icon-m-project">
+          <text class="module-icon-text">创</text>
+        </view>
+        <view class="module-info">
+          <view class="module-title">我的创制项目</view>
+          <view class="module-desc">与「创制工坊」中的项目数据联动展示。</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+

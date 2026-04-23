@@ -1,0 +1,61 @@
+/* 自定义底部导航栏：原神淡色 + 选中底纹 */
+.tabbar-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tabbar-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(245, 243, 255, 0) 0%, #fdfbf7 40%, #f8f4ff 100%);
+  box-shadow: 0 -8rpx 20rpx rgba(191, 196, 222, 0.6);
+}
+
+.tabbar-inner {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx 24rpx 10rpx;
+}
+
+.tabbar-item {
+  display: flex;
+  justify-content: center;
+  margin: 0 12rpx;
+}
+
+.tabbar-item-pill {
+  padding: 8rpx 22rpx;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabbar-text {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #a0a7c4;
+  white-space: nowrap;
+}
+
+.tabbar-item-active .tabbar-item-pill {
+  background: linear-gradient(135deg, #ffe7b3, #fdd9a3);
+  box-shadow: 0 8rpx 20rpx rgba(231, 176, 94, 0.75);
+}
+
+.tabbar-item-active .tabbar-text {
+  color: #5b4630;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
